@@ -32,7 +32,7 @@ def password_generator():
         generated += chr(random.randint(range_start, range_end))
         character_number -= 1
     password = ''.join(random.sample(generated, len(generated)))
-    print(f'password: {password}')
+    print(f'Password: {password}')
 
 
 def main():
