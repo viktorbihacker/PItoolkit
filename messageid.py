@@ -4,7 +4,6 @@ def extract():
             text = file.readlines()
     except FileNotFoundError:
         quit("Please place an input file (messageid.input) in the root directory with the text...")
-
     ids = []
     duplicate_removed = []
     for line in text:
@@ -16,13 +15,11 @@ def extract():
             if hyphen_number == 4:
                 ids.append(word)
     output = ""
-
     for id in ids:
         if id not in duplicate_removed:
             duplicate_removed.append(id)
     for item in duplicate_removed:
         output += item + "\n"
     print(f"\n{output}")
-
     with open("./messageid.output", "w") as output_file:
         print(output, file=output_file)
