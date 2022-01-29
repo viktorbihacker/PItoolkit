@@ -1,16 +1,36 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+import sys
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+def first_function():
+    print("First function triggers here")
 
 
-# Press the green button in the gutter to run the script.
+def main():
+    menu_items = ["First function", "Second function", "Third function"]
+    while True:
+        application_name = "PItoolkit"
+        application_name_placeholder = len(application_name) * "-"
+        menu_title_placeholder = int(max([len(item) for item in menu_items]) / 2) * "-"
+        menu_header = f'{menu_title_placeholder}{application_name}{menu_title_placeholder}'
+        menu_footer = f"{menu_title_placeholder}{application_name_placeholder}{menu_title_placeholder}"
+        for menu_item_index, menu_item in enumerate(menu_items):
+            if menu_item_index == 0:
+                print(menu_header)
+            print(f'{menu_item_index + 1}. {menu_item}')
+            if menu_item_index == len(menu_items) - 1:
+                print(menu_footer)
+        selection = input("Enter selection: ")
+        try:
+            if 0 < int(selection) < len(menu_items) + 1:
+                try:
+                    getattr(sys.modules[__name__], "%s" % menu_items[int(selection) - 1].lower().replace(" ", "_"))()
+                except AttributeError:
+                    quit("Function is not implemented")
+        except ValueError:
+            quit()
+        else:
+            quit()
+
+
 if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    main()
