@@ -1,5 +1,9 @@
 import sys
-import password
+import password, messageid
+
+
+def extract_sap_messageid():
+    messageid.extract()
 
 
 def generate_password():
@@ -7,7 +11,7 @@ def generate_password():
 
 
 def main():
-    menu_items = ["Generate password", "Second function", "Third function"]
+    menu_items = ["Generate password", "Extract SAP MessageID", "Third function"]
     while True:
         application_name = "PItoolkit"
         application_name_placeholder = len(application_name) * "-"
