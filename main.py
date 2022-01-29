@@ -8,7 +8,10 @@ def password_generator():
                             'number': [48, 57], 'upper': [65, 90], 'lower': [97, 122]}
     character_keys = ['special', 'number', 'upper', 'lower']
     generated = ''
-
+    try:
+        character_number = int(input(f'Enter password length({default_password_length}-{maximum_password_length}): '))
+    except ValueError:
+        quit()
 
 def main():
     menu_items = ["Password generator", "Second function", "Third function"]
