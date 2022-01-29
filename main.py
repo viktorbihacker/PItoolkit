@@ -1,12 +1,13 @@
 import sys
+import password
 
 
-def first_function():
-    print("First function triggers here")
+def generate_password():
+    password.generator()
 
 
 def main():
-    menu_items = ["First function", "Second function", "Third function"]
+    menu_items = ["Generate password", "Second function", "Third function"]
     while True:
         application_name = "PItoolkit"
         application_name_placeholder = len(application_name) * "-"
