@@ -1,5 +1,6 @@
 import sys
-import password, messageid
+import password
+import messageid
 
 
 def extract_sap_messageid():
