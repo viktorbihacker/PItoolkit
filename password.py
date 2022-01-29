@@ -1,5 +1,7 @@
 import random
 
+import pyperclip as pyperclip
+
 
 def generator():
     default_password_length = 12
@@ -31,4 +33,8 @@ def generator():
         generated += chr(random.randint(range_start, range_end))
         character_number -= 1
     password = ''.join(random.sample(generated, len(generated)))
-    print(f'Password: {password}')
+    try:
+        pyperclip.copy(password)
+        print(f'Password copied to the clipboard!')
+    except pyperclip.PyperclipException:
+        print(f'Password: {password}')
