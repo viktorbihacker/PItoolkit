@@ -10,7 +10,14 @@ def main():
             print(f'{menu_item_index + 1}. {menu_item}')
             if menu_item_index == len(menu_items) - 1:
                 print(menu_footer)
-        quit()
+        selection = input("Enter selection: ")
+        try:
+            if 0 < int(selection) < len(menu_items) + 1:
+                print(menu_items[int(selection) - 1])
+        except ValueError:
+            quit()
+        else:
+            quit()
 
 
 if __name__ == '__main__':
