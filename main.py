@@ -1,8 +1,12 @@
 import sys
 
 
+def first_function():
+    print("First function triggers here")
+
+
 def main():
-    menu_items = ["First function","Second function","Third function"]
+    menu_items = ["First function", "Second function", "Third function"]
     while True:
         menu_placeholder = int(max([len(item) for item in menu_items]) / 2) * "-"
         menu_header = f'{menu_placeholder}PItoolkit{menu_placeholder}'
@@ -28,4 +32,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
