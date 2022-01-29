@@ -24,4 +24,5 @@ def extract():
         output += item + "\n"
     print(f"\n{output}")
 
-
+    with open("./messageid.output", "w") as output_file:
+        print(output, file=output_file)
