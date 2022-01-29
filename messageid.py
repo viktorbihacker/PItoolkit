@@ -22,3 +22,6 @@ def extract():
             duplicate_removed.append(id)
     for item in duplicate_removed:
         output += item + "\n"
+    print(f"\n{output}")
+
+
