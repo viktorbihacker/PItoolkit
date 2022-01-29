@@ -1,3 +1,6 @@
+import sys
+
+
 def main():
     menu_items = ["First function","Second function","Third function"]
     while True:
@@ -13,7 +16,10 @@ def main():
         selection = input("Enter selection: ")
         try:
             if 0 < int(selection) < len(menu_items) + 1:
-                print(menu_items[int(selection) - 1])
+                try:
+                    getattr(sys.modules[__name__], "%s" % menu_items[int(selection) - 1].lower().replace(" ", "_"))()
+                except AttributeError:
+                    quit("Function is not implemented")
         except ValueError:
             quit()
         else:
