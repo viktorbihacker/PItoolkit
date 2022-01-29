@@ -20,3 +20,5 @@ def extract():
     for id in ids:
         if id not in duplicate_removed:
             duplicate_removed.append(id)
+    for item in duplicate_removed:
+        output += item + "\n"
