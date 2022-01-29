@@ -2,7 +2,12 @@ import sys
 
 
 def password_generator():
-    print("Password generator function triggers here")
+    default_password_length = 12
+    maximum_password_length = 32
+    character_repository = {'special': [[33, 41], [43, 47], [58, 64], [91, 96], [123, 126]],
+                            'number': [48, 57], 'upper': [65, 90], 'lower': [97, 122]}
+    character_keys = ['special', 'number', 'upper', 'lower']
+    generated = ''
 
 
 def main():
