@@ -13,6 +13,13 @@ def password_generator():
     except ValueError:
         print(f'Password length set to {default_password_length}.')
         character_number = default_password_length
+    if character_number < default_password_length:
+        print(f'Password length set to {default_password_length}.')
+        character_number = default_password_length
+    if character_number > maximum_password_length:
+        print(f'Password length set to {maximum_password_length}.')
+        character_number = maximum_password_length
+
 
 def main():
     menu_items = ["Password generator", "Second function", "Third function"]
