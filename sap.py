@@ -3,7 +3,7 @@ import random
 import pyperclip as pyperclip
 
 
-def generator():
+def password():
     default_password_length = 12
     maximum_password_length = 32
     character_repository = {'special': [[33, 41], [43, 47], [58, 64], [91, 96], [123, 126]],
@@ -38,3 +38,30 @@ def generator():
         print(f'Password copied to the clipboard!')
     except pyperclip.PyperclipException:
         print(f'Password: {password}')
+
+
+def messageid():
+    try:
+        with open("./messageid.input", "r") as file:
+            text = file.readlines()
+    except FileNotFoundError:
+        quit("Please place an input file (messageid.input) in the root directory with the text...")
+    ids = []
+    duplicate_removed = []
+    for line in text:
+        for word in line.replace("\n", "").split(" "):
+            hyphen_number = 0
+            for letter in word:
+                if letter == "-":
+                    hyphen_number += 1
+            if hyphen_number == 4:
+                ids.append(word)
+    output = ""
+    for id in ids:
+        if id not in duplicate_removed:
+            duplicate_removed.append(id)
+    for item in duplicate_removed:
+        output += item + "\n"
+    print(f"\n{output}")
+    with open("./messageid.output", "w") as output_file:
+        print(output, file=output_file)
