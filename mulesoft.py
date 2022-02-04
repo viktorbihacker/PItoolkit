@@ -48,3 +48,7 @@ def catalog():
     # write csv to file
     with open("./API_catalog.csv", "w") as file:
         file.write(csv)
+
+
+def secure():
+    pass
