@@ -2,6 +2,9 @@ import requests, json
 
 
 def catalog():
+    # initialize csv
+    csv = 'Organization;Environment;API Name;State;Version;Runtime\n'
+
     # get credentials
     username = input("Username: ")
     password = input("Password: ")
