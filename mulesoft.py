@@ -43,6 +43,10 @@ def catalog():
             for i in json.loads(application_response.text):
                 csv += f'{org_name};{env_name};{i.get("domain")};{i.get("status")};{i.get("muleVersion")};{i.get("muleVersion")[0]}\n'
 
+    # write csv to file
+    with open("./API_catalog.csv", "w") as file:
+        file.write(csv)
+
 
 if __name__ == '__main__':
     catalog()
