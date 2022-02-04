@@ -41,7 +41,7 @@ def catalog():
                        'x-anypnt-org-id': orgid}
             application_response = requests.get(url=url, headers=headers)
             for i in json.loads(application_response.text):
-                f'{org_name};{env_name};{i.get("domain")};{i.get("status")};{i.get("muleVersion")};{i.get("muleVersion")[0]}\n'
+                csv += f'{org_name};{env_name};{i.get("domain")};{i.get("status")};{i.get("muleVersion")};{i.get("muleVersion")[0]}\n'
 
 
 if __name__ == '__main__':
