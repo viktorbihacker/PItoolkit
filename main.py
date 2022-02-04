@@ -1,6 +1,7 @@
 import sys
 import password
 import messageid
+import mulesoft
 
 
 def extract_sap_messageid():
@@ -11,8 +12,12 @@ def generate_password():
     password.generator()
 
 
+def mulesoft_api_catalog():
+    mulesoft.catalog()
+
+
 def main():
-    menu_items = ["Generate password", "Extract SAP MessageID", "Third function"]
+    menu_items = ["Generate password", "Extract SAP MessageID", "MuleSoft API catalog"]
     while True:
         application_name = "PItoolkit"
         application_name_placeholder = len(application_name) * "-"
