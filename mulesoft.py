@@ -14,5 +14,14 @@ def catalog():
     token = json.loads(token_response.text).get('access_token')
 
 
+    # get orgids
+    url = 'https://anypoint.mulesoft.com/accounts/api/me'
+    headers = {'Authorization': 'Bearer ' + token}
+    orgid_response = requests.get(url, headers=headers)
+    orgids = {}
+    for index, item in enumerate(json.loads(orgid_response.text).get('user').get('memberOfOrganizations')):
+        orgids[item.get('id')] = item.get('name')
+
+
 if __name__ == '__main__':
     catalog()
