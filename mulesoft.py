@@ -1,3 +1,4 @@
+import getpass
 import json
 import requests
 
@@ -8,7 +9,7 @@ def catalog():
 
     # get credentials
     username = input("Username: ")
-    password = input("Password: ")
+    password = getpass.getpass("Password: ")
 
     # get token
     url = 'https://anypoint.mulesoft.com/accounts/login'
@@ -47,7 +48,3 @@ def catalog():
     # write csv to file
     with open("./API_catalog.csv", "w") as file:
         file.write(csv)
-
-
-if __name__ == '__main__':
-    catalog()
