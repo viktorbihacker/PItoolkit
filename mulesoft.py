@@ -30,6 +30,16 @@ def catalog():
         for index, item in enumerate([i.get('id') for i in json.loads(envids_response.text).get('data')]):
             envids[item] = [i.get('name') for i in json.loads(envids_response.text).get('data')][index]
 
+        # get applications
+        for envid, env_name in envids.items():
+            url = 'https://anypoint.mulesoft.com/cloudhub/api/applications'
+            headers = {'authorization': 'Bearer ' + token,
+                       'x-anypnt-env-id': envid,
+                       'x-anypnt-org-id': orgid}
+            application_response = requests.get(url=url, headers=headers)
+            for i in json.loads(application_response.text):
+                f'{org_name};{env_name};{i.get("domain")};{i.get("status")};{i.get("muleVersion")};{i.get("muleVersion")[0]}\n'
+
 
 if __name__ == '__main__':
     catalog()
