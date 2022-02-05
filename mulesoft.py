@@ -53,11 +53,11 @@ def catalog():
 
 
 def secure():
+    mode = input("encrypt/decrypt: ").lower()
     payload = input("file/string: ").lower()
-    input_string = "properties_input.yaml properties_output.yaml"
+    input_string = "properties_encrypted.yaml properties_decrypted.yaml" if mode == "decrypt" else "properties_decrypted.yaml properties_encrypted.yaml"
     if payload == "string":
         input_string = input("String: ")
-    mode = input("encrypt/decrypt: ").lower()
     algorithm = input("blowfish: ").capitalize()
 
     os.system(
