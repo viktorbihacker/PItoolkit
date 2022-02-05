@@ -1,5 +1,7 @@
 import getpass
 import json
+import os
+
 import requests
 
 
@@ -51,4 +53,12 @@ def catalog():
 
 
 def secure():
-    pass
+    payload = input("file/string: ").lower()
+    input_string = "properties_input.yaml properties_output.yaml"
+    if payload == "string":
+        input_string = input("String: ")
+    mode = input("encrypt/decrypt: ").lower()
+    algorithm = input("blowfish: ").capitalize()
+
+    os.system(
+        f'java -cp secure-properties-tool.jar com.mulesoft.tools.SecurePropertiesTool {payload} {mode} {algorithm} CBC mulesoft {input_string}')
