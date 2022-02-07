@@ -15,8 +15,12 @@ def mulesoft_api_catalog():
     mulesoft.catalog()
 
 
+def mulesoft_secure_properties():
+    mulesoft.secure()
+
+
 def main():
-    menu_items = ["SAP Password", "SAP MessageID", "MuleSoft API Catalog"]
+    menu_items = ["SAP Password", "SAP MessageID", "MuleSoft API Catalog", "MuleSoft Secure Properties"]
     while True:
         application_name = "PItoolkit"
         application_name_placeholder = len(application_name) * "-"

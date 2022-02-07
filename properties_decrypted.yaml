@@ -1,0 +1,5 @@
+a:
+  b:
+    value1: /path
+    value2: password
+    value3: user
