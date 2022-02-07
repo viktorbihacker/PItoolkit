@@ -53,12 +53,26 @@ def catalog():
 
 
 def secure():
-    mode = input("encrypt/decrypt: ").lower()
-    payload = input("file/string: ").lower()
-    input_string = "properties_encrypted.yaml properties_decrypted.yaml" if mode == "decrypt" else "properties_decrypted.yaml properties_encrypted.yaml"
-    if payload == "string":
-        input_string = input("String: ")
-    algorithm = input("blowfish: ").capitalize()
+    HIGHLIGHT = '\033[7m'
+    END = '\033[0m'
 
+    direction = input(f"{HIGHLIGHT}e{END}ncrypt {HIGHLIGHT}d{END}ecrypt: ").lower()
+    direction = 'encrypt' if direction == 'e' else 'decrypt' if direction == 'd' else quit()
+
+    file_or_string = input(f"{HIGHLIGHT}f{END}ile {HIGHLIGHT}s{END}tring: ").lower()
+    file_or_string = 'file' if file_or_string == 'f' else 'string' if file_or_string == 's' else quit()
+
+    string_or_filename = "properties_encrypted.yaml properties_decrypted.yaml" if direction == "decrypt" else "properties_decrypted.yaml properties_encrypted.yaml"
+
+    if file_or_string == "string":
+        string_or_filename = input("String to be encoded: ") if direction == 'encrypt' else input(
+            "String to be decoded: ")
+
+    algorithm = input(
+        f"{HIGHLIGHT}A{END}ES {HIGHLIGHT}B{END}lowfish(default) {HIGHLIGHT}D{END}ES D{HIGHLIGHT}E{END}Sede {HIGHLIGHT}R{END}C2 R{HIGHLIGHT}C{END}A: ").lower()
+    algorithm = 'AES' if algorithm == 'a' else 'Blowfish' if algorithm == 'b' or algorithm == '' else 'DES' if algorithm == 'd' else 'DESede' if algorithm == 'e' else 'RC2' if algorithm == 'r' else 'RCA' if algorithm == 'c' else quit()
+
+    mode = input(f"{HIGHLIGHT}C{END}BC(default) C{HIGHLIGHT}F{END}B {HIGHLIGHT}E{END}CB {HIGHLIGHT}O{END}FB: ").lower()
+    mode = 'CBC' if mode == 'c' or mode == '' else 'CFB' if mode == 'f' else 'ECB' if mode == 'e' else 'OFB' if mode == 'o' else quit()
     os.system(
-        f'java -cp secure-properties-tool.jar com.mulesoft.tools.SecurePropertiesTool {payload} {mode} {algorithm} CBC mulesoft {input_string}')
+        f'java -cp secure-properties-tool.jar com.mulesoft.tools.SecurePropertiesTool {file_or_string} {direction} {algorithm} {mode} mulesoft {string_or_filename}')
