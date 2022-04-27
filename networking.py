@@ -11,7 +11,9 @@ def ping():
 
 
 def traceroute():
-    pass
+    host = input(str("Host: "))
+    command = ['tracert', host] if system_info() == 'windows' else ['traceroute', host]
+    return call_command(command)
 
 
 def system_info():
