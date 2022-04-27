@@ -22,3 +22,7 @@ def system_info():
 
 def call_command(command):
     return subprocess.call(command) == 0
+
+
+def dns_lookup():
+    pass

@@ -19,15 +19,22 @@ def mulesoft_api_catalog():
 def mulesoft_secure_properties():
     mulesoft.secure()
 
+
 def ping():
     networking.ping()
+
 
 def traceroute():
     networking.traceroute()
 
 
+def dns_lookup():
+    networking.dns_lookup()
+
+
 def main():
-    menu_items = ["SAP Password", "SAP MessageID", "MuleSoft API Catalog", "MuleSoft Secure Properties", "Ping", "Traceroute"]
+    menu_items = ["SAP Password", "SAP MessageID", "MuleSoft API Catalog", "MuleSoft Secure Properties", "Ping",
+                  "Traceroute", "DNS lookup"]
     while True:
         application_name = "PItoolkit"
         application_name_placeholder = len(application_name) * "-"
