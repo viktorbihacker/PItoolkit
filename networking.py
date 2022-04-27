@@ -16,13 +16,15 @@ def traceroute():
     return call_command(command)
 
 
+def dns_lookup():
+    dns = input(str("DNS: "))
+    command = ['nslookup', dns]
+    return call_command(command)
+
+
 def system_info():
     return platform.system().lower()
 
 
 def call_command(command):
     return subprocess.call(command) == 0
-
-
-def dns_lookup():
-    pass
