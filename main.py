@@ -2,6 +2,7 @@ import sys
 import mulesoft
 import sap
 import networking
+import utils
 
 
 def sap_messageid():
@@ -32,9 +33,13 @@ def dns_lookup():
     networking.dns_lookup()
 
 
+def character_duplicate_remover():
+    utils.character_duplicate_remover()
+
+
 def main():
     menu_items = ["SAP Password", "SAP MessageID", "MuleSoft API Catalog", "MuleSoft Secure Properties", "Ping",
-                  "Traceroute", "DNS lookup"]
+                  "Traceroute", "DNS lookup", "Character duplicate remover"]
     while True:
         application_name = "PItoolkit"
         application_name_placeholder = len(application_name) * "-"
